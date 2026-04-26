@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "coloredredstonereborn:light_gray_redstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "coloredredstonereborn:light_gray_redstone"
+  }
+}

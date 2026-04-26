@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/comparator_on_subtract",
+    "textures": {
+        "comparator": "coloredredstonereborn:block/light_gray_comparator_on"
+    }
+}

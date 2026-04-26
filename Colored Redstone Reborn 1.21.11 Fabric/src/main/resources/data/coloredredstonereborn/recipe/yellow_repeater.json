@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        "minecraft:repeater",
+        "minecraft:yellow_dye"
+    ],
+    "result": "coloredredstonereborn:yellow_repeater"
+}

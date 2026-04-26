@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": {
+      "tag": "coloredredstonereborn:all_redstone_lamps"
+    },
+    "D": {
+      "item": "minecraft:magenta_dye"
+    }
+  },
+  "pattern": [
+    " D ",
+    "DLD",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "item": "coloredredstonereborn:magenta_redstone_lamp"
+  }
+}

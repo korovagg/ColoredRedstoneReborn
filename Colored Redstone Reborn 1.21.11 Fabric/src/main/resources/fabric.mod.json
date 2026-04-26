@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "coloredredstonereborn",
+  "version": "${version}",
+  "name": "Colored Redstone Reborn",
+  "description": "Adds various color variants of redstone components.",
+  "authors": [
+    "KoroWin"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/coloredredstonereborn/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "win.korowin.ColoredRedstoneFabric"
+    ],
+    "client": [
+      "win.korowin.ColoredRedstoneClient"
+    ]
+  },
+  "mixins": [
+    "coloredredstonereborn.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

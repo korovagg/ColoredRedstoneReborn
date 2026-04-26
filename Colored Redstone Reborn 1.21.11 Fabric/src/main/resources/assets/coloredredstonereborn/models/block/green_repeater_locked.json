@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/repeater_locked",
+    "textures": {
+        "repeater": "coloredredstonereborn:block/green_repeater"
+    }
+}

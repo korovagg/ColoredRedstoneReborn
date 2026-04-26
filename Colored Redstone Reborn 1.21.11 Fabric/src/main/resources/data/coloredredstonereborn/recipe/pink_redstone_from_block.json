@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "coloredredstonereborn:pink_redstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "coloredredstonereborn:pink_redstone"
+  }
+}

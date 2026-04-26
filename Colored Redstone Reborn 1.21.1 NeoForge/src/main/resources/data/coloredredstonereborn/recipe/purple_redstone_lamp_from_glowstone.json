@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "minecraft:purple_dye"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    },
+    "R": {
+      "tag": "coloredredstonereborn:all_redstone_dusts"
+    }
+  },
+  "pattern": [
+    "DRD",
+    "RGR",
+    "DRD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "coloredredstonereborn:purple_redstone_lamp"
+  }
+}

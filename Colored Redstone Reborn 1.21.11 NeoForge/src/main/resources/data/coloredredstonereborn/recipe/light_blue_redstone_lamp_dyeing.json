@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": "#coloredredstonereborn:all_redstone_lamps",
+    "D": "minecraft:light_blue_dye"
+  },
+  "pattern": [
+    " D ",
+    "DLD",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "coloredredstonereborn:light_blue_redstone_lamp"
+  }
+}

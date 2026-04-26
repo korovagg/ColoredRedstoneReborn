@@ -1,0 +1,244 @@
+{
+    "variants": {
+        "delay=1,facing=east,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater",
+            "y": 90
+        },
+        "delay=1,facing=east,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on",
+            "y": 90
+        },
+        "delay=1,facing=east,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked",
+            "y": 90
+        },
+        "delay=1,facing=east,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked",
+            "y": 90
+        },
+        "delay=1,facing=north,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater"
+        },
+        "delay=1,facing=north,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on"
+        },
+        "delay=1,facing=north,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked"
+        },
+        "delay=1,facing=north,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked"
+        },
+        "delay=1,facing=south,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater",
+            "y": 180
+        },
+        "delay=1,facing=south,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on",
+            "y": 180
+        },
+        "delay=1,facing=south,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked",
+            "y": 180
+        },
+        "delay=1,facing=south,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked",
+            "y": 180
+        },
+        "delay=1,facing=west,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater",
+            "y": 270
+        },
+        "delay=1,facing=west,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on",
+            "y": 270
+        },
+        "delay=1,facing=west,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked",
+            "y": 270
+        },
+        "delay=1,facing=west,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked",
+            "y": 270
+        },
+        "delay=2,facing=east,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_1tick",
+            "y": 90
+        },
+        "delay=2,facing=east,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_1tick",
+            "y": 90
+        },
+        "delay=2,facing=east,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_1tick",
+            "y": 90
+        },
+        "delay=2,facing=east,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_1tick",
+            "y": 90
+        },
+        "delay=2,facing=north,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_1tick"
+        },
+        "delay=2,facing=north,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_1tick"
+        },
+        "delay=2,facing=north,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_1tick"
+        },
+        "delay=2,facing=north,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_1tick"
+        },
+        "delay=2,facing=south,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_1tick",
+            "y": 180
+        },
+        "delay=2,facing=south,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_1tick",
+            "y": 180
+        },
+        "delay=2,facing=south,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_1tick",
+            "y": 180
+        },
+        "delay=2,facing=south,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_1tick",
+            "y": 180
+        },
+        "delay=2,facing=west,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_1tick",
+            "y": 270
+        },
+        "delay=2,facing=west,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_1tick",
+            "y": 270
+        },
+        "delay=2,facing=west,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_1tick",
+            "y": 270
+        },
+        "delay=2,facing=west,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_1tick",
+            "y": 270
+        },
+        "delay=3,facing=east,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_2tick",
+            "y": 90
+        },
+        "delay=3,facing=east,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_2tick",
+            "y": 90
+        },
+        "delay=3,facing=east,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_2tick",
+            "y": 90
+        },
+        "delay=3,facing=east,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_2tick",
+            "y": 90
+        },
+        "delay=3,facing=north,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_2tick"
+        },
+        "delay=3,facing=north,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_2tick"
+        },
+        "delay=3,facing=north,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_2tick"
+        },
+        "delay=3,facing=north,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_2tick"
+        },
+        "delay=3,facing=south,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_2tick",
+            "y": 180
+        },
+        "delay=3,facing=south,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_2tick",
+            "y": 180
+        },
+        "delay=3,facing=south,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_2tick",
+            "y": 180
+        },
+        "delay=3,facing=south,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_2tick",
+            "y": 180
+        },
+        "delay=3,facing=west,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_2tick",
+            "y": 270
+        },
+        "delay=3,facing=west,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_2tick",
+            "y": 270
+        },
+        "delay=3,facing=west,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_2tick",
+            "y": 270
+        },
+        "delay=3,facing=west,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_2tick",
+            "y": 270
+        },
+        "delay=4,facing=east,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_3tick",
+            "y": 90
+        },
+        "delay=4,facing=east,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_3tick",
+            "y": 90
+        },
+        "delay=4,facing=east,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_3tick",
+            "y": 90
+        },
+        "delay=4,facing=east,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_3tick",
+            "y": 90
+        },
+        "delay=4,facing=north,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_3tick"
+        },
+        "delay=4,facing=north,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_3tick"
+        },
+        "delay=4,facing=north,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_3tick"
+        },
+        "delay=4,facing=north,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_3tick"
+        },
+        "delay=4,facing=south,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_3tick",
+            "y": 180
+        },
+        "delay=4,facing=south,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_3tick",
+            "y": 180
+        },
+        "delay=4,facing=south,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_3tick",
+            "y": 180
+        },
+        "delay=4,facing=south,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_3tick",
+            "y": 180
+        },
+        "delay=4,facing=west,locked=false,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_3tick",
+            "y": 270
+        },
+        "delay=4,facing=west,locked=false,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_3tick",
+            "y": 270
+        },
+        "delay=4,facing=west,locked=true,powered=false": {
+            "model": "coloredredstonereborn:block/brown_repeater_locked_3tick",
+            "y": 270
+        },
+        "delay=4,facing=west,locked=true,powered=true": {
+            "model": "coloredredstonereborn:block/brown_repeater_on_locked_3tick",
+            "y": 270
+        }
+    }
+}

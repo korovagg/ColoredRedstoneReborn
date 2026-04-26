@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/template_redstone_torch",
+    "textures": {
+        "torch": "coloredredstonereborn:block/purple_redstone_torch_off"
+    }
+}

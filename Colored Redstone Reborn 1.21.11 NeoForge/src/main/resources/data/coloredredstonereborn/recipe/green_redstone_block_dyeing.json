@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": "minecraft:green_dye",
+    "B": "#coloredredstonereborn:all_redstone_blocks"
+  },
+  "pattern": [
+    "DDD",
+    "DBD",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "coloredredstonereborn:green_redstone_block"
+  }
+}

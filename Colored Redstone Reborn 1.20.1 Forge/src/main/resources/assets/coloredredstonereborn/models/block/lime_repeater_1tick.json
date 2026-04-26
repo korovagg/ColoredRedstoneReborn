@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/repeater_1tick",
+    "textures": {
+        "repeater": "coloredredstonereborn:block/lime_repeater"
+    }
+}

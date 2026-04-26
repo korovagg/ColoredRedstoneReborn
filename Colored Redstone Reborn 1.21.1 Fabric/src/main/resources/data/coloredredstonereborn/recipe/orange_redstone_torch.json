@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        "minecraft:redstone_torch",
+        "minecraft:orange_dye"
+    ],
+    "result": "coloredredstonereborn:orange_redstone_torch"
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/comparator_on",
+    "textures": {
+        "comparator": "coloredredstonereborn:block/gray_comparator_on"
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "coloredredstonereborn:block/yellow_redstone_lamp"
+    },
+    "lit=true": {
+      "model": "coloredredstonereborn:block/yellow_redstone_lamp_on"
+    }
+  }
+}

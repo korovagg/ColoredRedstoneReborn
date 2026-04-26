@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "facing=east,lit=true": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch",
+            "y": 90
+        },
+        "facing=east,lit=false": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch_off",
+            "y": 90
+        },
+        "facing=north,lit=true": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch"
+        },
+        "facing=north,lit=false": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch_off"
+        },
+        "facing=south,lit=true": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch",
+            "y": 180
+        },
+        "facing=south,lit=false": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch_off",
+            "y": 180
+        },
+        "facing=west,lit=true": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch",
+            "y": 270
+        },
+        "facing=west,lit=false": {
+            "model": "coloredredstonereborn:block/blue_redstone_wall_torch_off",
+            "y": 270
+        }
+    }
+}

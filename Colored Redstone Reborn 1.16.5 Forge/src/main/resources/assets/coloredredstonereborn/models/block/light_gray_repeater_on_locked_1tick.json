@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/repeater_on_locked_1tick",
+    "textures": {
+        "repeater": "coloredredstonereborn:block/light_gray_repeater_on"
+    }
+}

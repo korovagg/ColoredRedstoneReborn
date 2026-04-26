@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        "minecraft:comparator",
+        "minecraft:brown_dye"
+    ],
+    "result": "coloredredstonereborn:brown_comparator"
+}

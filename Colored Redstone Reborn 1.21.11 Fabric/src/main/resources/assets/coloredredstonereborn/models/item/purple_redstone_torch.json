@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "coloredredstonereborn:block/purple_redstone_torch"
+    }
+}

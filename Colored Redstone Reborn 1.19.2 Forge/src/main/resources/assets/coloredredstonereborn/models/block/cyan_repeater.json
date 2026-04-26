@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/repeater",
+    "textures": {
+        "repeater": "coloredredstonereborn:block/cyan_repeater"
+    }
+}
