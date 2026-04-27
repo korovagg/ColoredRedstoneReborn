@@ -1,8 +1,10 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "minecraft:repeater",
-        "minecraft:lime_dye"
-    ],
-    "result": "coloredredstonereborn:lime_repeater"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:repeater",
+    "minecraft:lime_dye"
+  ],
+  "result": {
+    "id": "coloredredstonereborn:lime_repeater"
+  }
 }

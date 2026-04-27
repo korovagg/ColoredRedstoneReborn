@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "B": {
-      "tag": "coloredredstonereborn:all_redstone_blocks"
-    },
-    "D": {
-      "item": "minecraft:gray_dye"
-    }
+    "B": "#coloredredstonereborn:all_redstone_blocks",
+    "D": "minecraft:gray_dye"
   },
   "pattern": [
     "DDD",

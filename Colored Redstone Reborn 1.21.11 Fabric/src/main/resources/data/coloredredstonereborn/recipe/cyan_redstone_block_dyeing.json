@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "B": {
-      "tag": "coloredredstonereborn:all_redstone_blocks"
-    },
-    "D": {
-      "item": "minecraft:cyan_dye"
-    }
+    "B": "#coloredredstonereborn:all_redstone_blocks",
+    "D": "minecraft:cyan_dye"
   },
   "pattern": [
     "DDD",

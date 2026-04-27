@@ -1,8 +1,10 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "minecraft:repeater",
-        "minecraft:brown_dye"
-    ],
-    "result": "coloredredstonereborn:brown_repeater"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:repeater",
+    "minecraft:brown_dye"
+  ],
+  "result": {
+    "id": "coloredredstonereborn:brown_repeater"
+  }
 }

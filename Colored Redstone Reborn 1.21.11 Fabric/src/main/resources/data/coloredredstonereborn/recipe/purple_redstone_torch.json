@@ -1,8 +1,10 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "minecraft:redstone_torch",
-        "minecraft:purple_dye"
-    ],
-    "result": "coloredredstonereborn:purple_redstone_torch"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:redstone_torch",
+    "minecraft:purple_dye"
+  ],
+  "result": {
+    "id": "coloredredstonereborn:purple_redstone_torch"
+  }
 }

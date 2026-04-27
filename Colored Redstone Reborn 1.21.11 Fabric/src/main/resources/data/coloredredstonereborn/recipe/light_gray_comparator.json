@@ -1,8 +1,10 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "minecraft:comparator",
-        "minecraft:light_gray_dye"
-    ],
-    "result": "coloredredstonereborn:light_gray_comparator"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:comparator",
+    "minecraft:light_gray_dye"
+  ],
+  "result": {
+    "id": "coloredredstonereborn:light_gray_comparator"
+  }
 }
