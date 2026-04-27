@@ -26,16 +26,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class RedstoneWireBlockMixin {
 
     /**
-     * Allows different redstone wire blocks to share signal.
-     */
-    @Inject(method = "increasePower", at = @At("HEAD"), cancellable = true)
-    private void onGetWireSignal(BlockState state, CallbackInfoReturnable<Integer> cir) {
-        if (state.getBlock() instanceof RedstoneWireBlock) {
-            cir.setReturnValue(state.get(RedstoneWireBlock.POWER));
-        }
-    }
-
-    /**
      * Allows different redstone wire blocks to connect to each other.
      * @author Korowin
      * @reason Allows colored wires to connect into a single circuit.

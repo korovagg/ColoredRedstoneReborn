@@ -1,11 +1,12 @@
 package win.korowin.init;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import win.korowin.ColoredRedstoneFabric;
 
@@ -25,15 +26,18 @@ public class ModItems {
     }
 
     private static Item registerRedstoneDust(String name, Block block) {
-        return registerItem(name, new AliasedBlockItem(block, new Item.Settings()));
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        return registerItem(name, new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id))));
     }
 
     private static Item registerRedstoneBlock(String name, Block block) {
-        return registerItem(name, new BlockItem(block, new Item.Settings()));
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        return registerItem(name, new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)).useBlockPrefixedTranslationKey()));
     }
 
     private static Item registerRedstoneLamp(String name, Block block) {
-        return registerItem(name, new BlockItem(block, new Item.Settings()));
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        return registerItem(name, new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)).useBlockPrefixedTranslationKey()));
     }
 
     // Dusts

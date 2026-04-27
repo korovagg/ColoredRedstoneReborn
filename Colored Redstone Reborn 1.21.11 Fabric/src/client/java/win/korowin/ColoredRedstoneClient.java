@@ -1,12 +1,12 @@
 package win.korowin;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.util.math.MathHelper;
@@ -36,7 +36,7 @@ public class ColoredRedstoneClient implements ClientModInitializer {
         registerWireColor(ModBlocks.PINK_REDSTONE_WIRE, 0xF38BAA);
 
         // Register render layers
-        ModBlocks.REDSTONE_WIRES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+        ModBlocks.REDSTONE_WIRES.forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
     }
 
     private void registerWireColor(Block block, int baseColor) {

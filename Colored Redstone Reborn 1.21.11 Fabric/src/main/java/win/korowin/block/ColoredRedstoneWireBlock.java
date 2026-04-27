@@ -3,6 +3,7 @@ package win.korowin.block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -32,31 +33,29 @@ public class ColoredRedstoneWireBlock extends RedstoneWireBlock {
         int i = state.get(POWER);
         if (i != 0) {
             for (Direction direction : Direction.Type.HORIZONTAL) {
-                switch (state.get(DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction))) {
-                    case UP:
-                        this.spawnParticles(world, random, pos, this.particleColor, Direction.DOWN, direction, 0.0F, 0.5F);
-                        this.spawnParticles(world, random, pos, this.particleColor, direction, Direction.UP, -0.5F, 0.5F);
-                        break;
-                    case SIDE:
-                        this.spawnParticles(world, random, pos, this.particleColor, Direction.DOWN, direction, 0.0F, 0.5F);
-                        break;
-                    case NONE:
-                    default:
-                        this.spawnParticles(world, random, pos, this.particleColor, Direction.DOWN, direction, 0.0F, 0.3F);
-                        break;
+                net.minecraft.block.enums.WireConnection connection = state.get(DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction));
+                if (connection == net.minecraft.block.enums.WireConnection.UP) {
+                    this.spawnParticles(world, random, pos, Direction.DOWN, direction, 0.0F, 0.5F);
+                    this.spawnParticles(world, random, pos, direction, Direction.UP, -0.5F, 0.5F);
+                } else if (connection == net.minecraft.block.enums.WireConnection.SIDE) {
+                    this.spawnParticles(world, random, pos, Direction.DOWN, direction, 0.0F, 0.5F);
+                } else {
+                    this.spawnParticles(world, random, pos, Direction.DOWN, direction, 0.0F, 0.3F);
                 }
             }
         }
     }
 
-    private void spawnParticles(World world, Random random, BlockPos pos, Vector3f color, Direction direction, Direction direction1, float f, float f1) {
+    private void spawnParticles(World world, Random random, BlockPos pos, Direction direction, Direction direction1, float f, float f1) {
         float f2 = f1 - f;
         if (!(random.nextFloat() > 0.2F * f2)) {
             float f4 = f + f2 * random.nextFloat();
             double d0 = 0.5D + (double) (0.4375F * (float) direction.getOffsetX()) + (double) (f4 * (float) direction1.getOffsetX());
             double d1 = 0.5D + (double) (0.4375F * (float) direction.getOffsetY()) + (double) (f4 * (float) direction1.getOffsetY());
             double d2 = 0.5D + (double) (0.4375F * (float) direction.getOffsetZ()) + (double) (f4 * (float) direction1.getOffsetZ());
-            world.addParticle(new DustParticleEffect(color, 1.0F), (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, 0.0D, 0.0D, 0.0D);
+            
+            ParticleEffect particleEffect = new DustParticleEffect(this.baseColor, 1.0F);
+            world.addParticleClient(particleEffect, (double)pos.getX() + d0, (double)pos.getY() + d1, (double)pos.getZ() + d2, 0.0D, 0.0D, 0.0D);
         }
     }
 }

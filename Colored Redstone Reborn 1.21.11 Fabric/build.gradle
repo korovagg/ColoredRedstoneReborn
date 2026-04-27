@@ -102,3 +102,4 @@ publishing {
         // retrieving dependencies.
     }
 }
+tasks.register('printMethods', JavaExec) { mainClass = 'win.korowin.TestClass'; classpath = sourceSets.main.runtimeClasspath }

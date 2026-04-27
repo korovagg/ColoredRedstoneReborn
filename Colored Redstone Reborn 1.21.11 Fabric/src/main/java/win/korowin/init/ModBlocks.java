@@ -4,6 +4,8 @@ import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import win.korowin.ColoredRedstoneFabric;
@@ -20,12 +22,10 @@ public class ModBlocks {
     public static final List<Block> REDSTONE_WIRES = new ArrayList<>();
     public static final List<Block> REDSTONE_LAMPS = new ArrayList<>();
 
-    private static Block registerBlock(String name, Block block) {
-        return Registry.register(Registries.BLOCK, Identifier.of(ColoredRedstoneFabric.MODID, name), block);
-    }
-
     private static Block registerWire(String name, int color) {
-        Block block = registerBlock(name, new ColoredRedstoneWireBlock(AbstractBlock.Settings.create()
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        Block block = Registry.register(Registries.BLOCK, id, new ColoredRedstoneWireBlock(AbstractBlock.Settings.create()
+                .registryKey(RegistryKey.of(RegistryKeys.BLOCK, id))
                 .noCollision()
                 .breakInstantly()
                 .pistonBehavior(PistonBehavior.DESTROY)
@@ -35,7 +35,9 @@ public class ModBlocks {
     }
 
     private static Block registerRedstoneBlock(String name, MapColor color) {
-        Block block = registerBlock(name, new RedstoneBlock(AbstractBlock.Settings.create()
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        Block block = Registry.register(Registries.BLOCK, id, new RedstoneBlock(AbstractBlock.Settings.create()
+                .registryKey(RegistryKey.of(RegistryKeys.BLOCK, id))
                 .mapColor(color)
                 .requiresTool()
                 .strength(5.0F, 6.0F)
@@ -45,7 +47,9 @@ public class ModBlocks {
     }
 
     private static Block registerRedstoneLamp(String name, MapColor color) {
-        Block block = registerBlock(name, new RedstoneLampBlock(AbstractBlock.Settings.create()
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        Block block = Registry.register(Registries.BLOCK, id, new RedstoneLampBlock(AbstractBlock.Settings.create()
+                .registryKey(RegistryKey.of(RegistryKeys.BLOCK, id))
                 .mapColor(color)
                 .strength(0.3F)
                 .luminance((state) -> state.get(RedstoneLampBlock.LIT) ? 15 : 0)
