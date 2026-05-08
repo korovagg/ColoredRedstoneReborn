@@ -3,11 +3,13 @@ package win.korowin.init;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.VerticallyAttachedBlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import win.korowin.ColoredRedstoneFabric;
 
 import java.util.ArrayList;
@@ -38,6 +40,11 @@ public class ModItems {
     private static Item registerRedstoneLamp(String name, Block block) {
         Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
         return registerItem(name, new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)).useBlockPrefixedTranslationKey()));
+    }
+
+    private static Item registerRedstoneTorch(String name, Block standing, Block wall) {
+        Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
+        return registerItem(name, new VerticallyAttachedBlockItem(standing, wall, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)), Direction.DOWN));
     }
 
     // Dusts
@@ -91,6 +98,23 @@ public class ModItems {
     public static final Item PURPLE_REDSTONE_LAMP = registerRedstoneLamp("purple_redstone_lamp", ModBlocks.PURPLE_REDSTONE_LAMP);
     public static final Item MAGENTA_REDSTONE_LAMP = registerRedstoneLamp("magenta_redstone_lamp", ModBlocks.MAGENTA_REDSTONE_LAMP);
     public static final Item PINK_REDSTONE_LAMP = registerRedstoneLamp("pink_redstone_lamp", ModBlocks.PINK_REDSTONE_LAMP);
+
+    // Torches
+    public static final Item WHITE_REDSTONE_TORCH = registerRedstoneTorch("white_redstone_torch", ModBlocks.WHITE_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(0));
+    public static final Item LIGHT_GRAY_REDSTONE_TORCH = registerRedstoneTorch("light_gray_redstone_torch", ModBlocks.LIGHT_GRAY_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(1));
+    public static final Item GRAY_REDSTONE_TORCH = registerRedstoneTorch("gray_redstone_torch", ModBlocks.GRAY_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(2));
+    public static final Item BLACK_REDSTONE_TORCH = registerRedstoneTorch("black_redstone_torch", ModBlocks.BLACK_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(3));
+    public static final Item BROWN_REDSTONE_TORCH = registerRedstoneTorch("brown_redstone_torch", ModBlocks.BROWN_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(4));
+    public static final Item ORANGE_REDSTONE_TORCH = registerRedstoneTorch("orange_redstone_torch", ModBlocks.ORANGE_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(5));
+    public static final Item YELLOW_REDSTONE_TORCH = registerRedstoneTorch("yellow_redstone_torch", ModBlocks.YELLOW_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(6));
+    public static final Item LIME_REDSTONE_TORCH = registerRedstoneTorch("lime_redstone_torch", ModBlocks.LIME_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(7));
+    public static final Item GREEN_REDSTONE_TORCH = registerRedstoneTorch("green_redstone_torch", ModBlocks.GREEN_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(8));
+    public static final Item CYAN_REDSTONE_TORCH = registerRedstoneTorch("cyan_redstone_torch", ModBlocks.CYAN_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(9));
+    public static final Item LIGHT_BLUE_REDSTONE_TORCH = registerRedstoneTorch("light_blue_redstone_torch", ModBlocks.LIGHT_BLUE_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(10));
+    public static final Item BLUE_REDSTONE_TORCH = registerRedstoneTorch("blue_redstone_torch", ModBlocks.BLUE_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(11));
+    public static final Item PURPLE_REDSTONE_TORCH = registerRedstoneTorch("purple_redstone_torch", ModBlocks.PURPLE_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(12));
+    public static final Item MAGENTA_REDSTONE_TORCH = registerRedstoneTorch("magenta_redstone_torch", ModBlocks.MAGENTA_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(13));
+    public static final Item PINK_REDSTONE_TORCH = registerRedstoneTorch("pink_redstone_torch", ModBlocks.PINK_REDSTONE_TORCH, ModBlocks.REDSTONE_WALL_TORCHES.get(14));
 
     public static void register() {
         // Items are registered during field initialization
