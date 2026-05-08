@@ -1,7 +1,9 @@
 package win.korowin.init;
 
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -45,6 +47,25 @@ public class ModItems {
         return ITEMS.registerSimpleBlockItem(name, block);
     }
 
+    /**
+     * Helper method to register colored redstone torch item.
+     * @param name The item name
+     * @param torch The standing torch block
+     * @return The registered item
+     */
+    private static DeferredItem<Item> registerRedstoneTorch(String name, DeferredBlock<Block> torch) {
+        return ITEMS.registerItem(name, properties -> {
+            String wallName = name.replace("_torch", "_wall_torch");
+            var wallTorchHolder = ModBlocks.BLOCKS.getEntries().stream()
+                    .filter(entry -> entry.getId().getPath().equals(wallName))
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("Wall torch block not found: " + wallName));
+
+            return new StandingAndWallBlockItem(torch.get(), (Block) wallTorchHolder.get(), Direction.DOWN, properties);
+        });
+    }
+
+    // Dusts
     public static final DeferredItem<Item> WHITE_REDSTONE = registerRedstoneDust("white_redstone", ModBlocks.WHITE_REDSTONE_WIRE);
     public static final DeferredItem<Item> LIGHT_GRAY_REDSTONE = registerRedstoneDust("light_gray_redstone", ModBlocks.LIGHT_GRAY_REDSTONE_WIRE);
     public static final DeferredItem<Item> GRAY_REDSTONE = registerRedstoneDust("gray_redstone", ModBlocks.GRAY_REDSTONE_WIRE);
@@ -61,6 +82,7 @@ public class ModItems {
     public static final DeferredItem<Item> MAGENTA_REDSTONE = registerRedstoneDust("magenta_redstone", ModBlocks.MAGENTA_REDSTONE_WIRE);
     public static final DeferredItem<Item> PINK_REDSTONE = registerRedstoneDust("pink_redstone", ModBlocks.PINK_REDSTONE_WIRE);
 
+    // Blocks
     public static final DeferredItem<BlockItem> WHITE_REDSTONE_BLOCK = registerRedstoneBlock("white_redstone_block", ModBlocks.WHITE_REDSTONE_BLOCK);
     public static final DeferredItem<BlockItem> LIGHT_GRAY_REDSTONE_BLOCK = registerRedstoneBlock("light_gray_redstone_block", ModBlocks.LIGHT_GRAY_REDSTONE_BLOCK);
     public static final DeferredItem<BlockItem> GRAY_REDSTONE_BLOCK = registerRedstoneBlock("gray_redstone_block", ModBlocks.GRAY_REDSTONE_BLOCK);
@@ -77,6 +99,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> MAGENTA_REDSTONE_BLOCK = registerRedstoneBlock("magenta_redstone_block", ModBlocks.MAGENTA_REDSTONE_BLOCK);
     public static final DeferredItem<BlockItem> PINK_REDSTONE_BLOCK = registerRedstoneBlock("pink_redstone_block", ModBlocks.PINK_REDSTONE_BLOCK);
 
+    // Lamps
     public static final DeferredItem<BlockItem> WHITE_REDSTONE_LAMP = registerRedstoneLamp("white_redstone_lamp", ModBlocks.WHITE_REDSTONE_LAMP);
     public static final DeferredItem<BlockItem> LIGHT_GRAY_REDSTONE_LAMP = registerRedstoneLamp("light_gray_redstone_lamp", ModBlocks.LIGHT_GRAY_REDSTONE_LAMP);
     public static final DeferredItem<BlockItem> GRAY_REDSTONE_LAMP = registerRedstoneLamp("gray_redstone_lamp", ModBlocks.GRAY_REDSTONE_LAMP);
@@ -94,10 +117,23 @@ public class ModItems {
     public static final DeferredItem<BlockItem> MAGENTA_REDSTONE_LAMP = registerRedstoneLamp("magenta_redstone_lamp", ModBlocks.MAGENTA_REDSTONE_LAMP);
     public static final DeferredItem<BlockItem> PINK_REDSTONE_LAMP = registerRedstoneLamp("pink_redstone_lamp", ModBlocks.PINK_REDSTONE_LAMP);
 
-    /**
-     * Register items with the mod event bus.
-     * @param eventBus The mod event bus
-     */
+    // Torches
+    public static final DeferredItem<Item> WHITE_REDSTONE_TORCH = registerRedstoneTorch("white_redstone_torch", ModBlocks.WHITE_REDSTONE_TORCH);
+    public static final DeferredItem<Item> LIGHT_GRAY_REDSTONE_TORCH = registerRedstoneTorch("light_gray_redstone_torch", ModBlocks.LIGHT_GRAY_REDSTONE_TORCH);
+    public static final DeferredItem<Item> GRAY_REDSTONE_TORCH = registerRedstoneTorch("gray_redstone_torch", ModBlocks.GRAY_REDSTONE_TORCH);
+    public static final DeferredItem<Item> BLACK_REDSTONE_TORCH = registerRedstoneTorch("black_redstone_torch", ModBlocks.BLACK_REDSTONE_TORCH);
+    public static final DeferredItem<Item> BROWN_REDSTONE_TORCH = registerRedstoneTorch("brown_redstone_torch", ModBlocks.BROWN_REDSTONE_TORCH);
+    public static final DeferredItem<Item> ORANGE_REDSTONE_TORCH = registerRedstoneTorch("orange_redstone_torch", ModBlocks.ORANGE_REDSTONE_TORCH);
+    public static final DeferredItem<Item> YELLOW_REDSTONE_TORCH = registerRedstoneTorch("yellow_redstone_torch", ModBlocks.YELLOW_REDSTONE_TORCH);
+    public static final DeferredItem<Item> LIME_REDSTONE_TORCH = registerRedstoneTorch("lime_redstone_torch", ModBlocks.LIME_REDSTONE_TORCH);
+    public static final DeferredItem<Item> GREEN_REDSTONE_TORCH = registerRedstoneTorch("green_redstone_torch", ModBlocks.GREEN_REDSTONE_TORCH);
+    public static final DeferredItem<Item> CYAN_REDSTONE_TORCH = registerRedstoneTorch("cyan_redstone_torch", ModBlocks.CYAN_REDSTONE_TORCH);
+    public static final DeferredItem<Item> LIGHT_BLUE_REDSTONE_TORCH = registerRedstoneTorch("light_blue_redstone_torch", ModBlocks.LIGHT_BLUE_REDSTONE_TORCH);
+    public static final DeferredItem<Item> BLUE_REDSTONE_TORCH = registerRedstoneTorch("blue_redstone_torch", ModBlocks.BLUE_REDSTONE_TORCH);
+    public static final DeferredItem<Item> PURPLE_REDSTONE_TORCH = registerRedstoneTorch("purple_redstone_torch", ModBlocks.PURPLE_REDSTONE_TORCH);
+    public static final DeferredItem<Item> MAGENTA_REDSTONE_TORCH = registerRedstoneTorch("magenta_redstone_torch", ModBlocks.MAGENTA_REDSTONE_TORCH);
+    public static final DeferredItem<Item> PINK_REDSTONE_TORCH = registerRedstoneTorch("pink_redstone_torch", ModBlocks.PINK_REDSTONE_TORCH);
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

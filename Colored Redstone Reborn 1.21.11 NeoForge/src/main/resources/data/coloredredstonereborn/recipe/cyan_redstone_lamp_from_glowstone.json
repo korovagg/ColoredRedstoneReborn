@@ -1,9 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "R": "#coloredredstonereborn:all_redstone_dusts",
-    "D": "minecraft:cyan_dye",
-    "G": "minecraft:glowstone"
+    "D": {
+      "item": "minecraft:cyan_dye"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    },
+    "R": {
+      "tag": "coloredredstonereborn:all_redstone_dusts"
+    }
   },
   "pattern": [
     "DRD",

@@ -1,8 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "L": "#coloredredstonereborn:all_redstone_lamps",
-    "D": "minecraft:gray_dye"
+    "D": {
+      "item": "minecraft:gray_dye"
+    },
+    "L": {
+      "tag": "coloredredstonereborn:all_redstone_lamps"
+    }
   },
   "pattern": [
     " D ",

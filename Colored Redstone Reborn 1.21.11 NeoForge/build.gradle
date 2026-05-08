@@ -160,6 +160,11 @@ publishing {
     }
 }
 
+task printMethods(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'win.korowin.TestClass'
+}
+
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {

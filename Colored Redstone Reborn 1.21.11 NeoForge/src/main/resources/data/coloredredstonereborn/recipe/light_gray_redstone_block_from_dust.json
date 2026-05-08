@@ -1,7 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "R": "coloredredstonereborn:light_gray_redstone"
+    "R": {
+      "item": "coloredredstonereborn:light_gray_redstone"
+    }
   },
   "pattern": [
     "RRR",

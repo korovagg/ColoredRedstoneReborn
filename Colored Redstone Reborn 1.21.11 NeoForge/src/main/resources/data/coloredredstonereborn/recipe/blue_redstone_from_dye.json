@@ -1,8 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "#coloredredstonereborn:all_redstone_dusts",
-    "minecraft:blue_dye"
+    {
+      "tag": "coloredredstonereborn:all_redstone_dusts"
+    },
+    {
+      "item": "minecraft:blue_dye"
+    }
   ],
   "result": {
     "count": 1,
