@@ -69,7 +69,7 @@ public abstract class RedstoneWireBlockMixin {
         BlockPos blockpos = pos.offset(direction);
         BlockState blockstate = world.getBlockState(blockpos);
         if (canClimb) {
-            boolean flag = this.canRunOnTop(world, blockpos, blockstate);
+            boolean flag = canRunOnTop(world, blockpos, blockstate);
             if (flag && connectsTo(world.getBlockState(blockpos.up()))) {
                 cir.setReturnValue(WireConnection.UP);
                 return;
@@ -86,5 +86,6 @@ public abstract class RedstoneWireBlockMixin {
     }
 
     @Shadow
-    protected abstract boolean canRunOnTop(BlockView world, BlockPos pos, BlockState state);
+    private boolean canRunOnTop(BlockView world, BlockPos pos, BlockState state) { return false; }
 }
+
