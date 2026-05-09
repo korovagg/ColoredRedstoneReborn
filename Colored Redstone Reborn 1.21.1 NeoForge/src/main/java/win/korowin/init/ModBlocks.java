@@ -4,6 +4,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PoweredBlock;
 import net.minecraft.world.level.block.RedstoneLampBlock;
+import net.minecraft.world.level.block.RedstoneTorchBlock;
+import net.minecraft.world.level.block.RedstoneWallTorchBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -12,6 +14,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import win.korowin.ColoredRedstoneReborn;
+import win.korowin.block.ColoredRedstoneTorchBlock;
+import win.korowin.block.ColoredRedstoneWallTorchBlock;
 import win.korowin.block.ColoredRedstoneWireBlock;
 
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class ModBlocks {
     public static final List<DeferredBlock<Block>> REDSTONE_BLOCKS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> REDSTONE_WIRES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> REDSTONE_LAMPS = new ArrayList<>();
+    public static final List<DeferredBlock<Block>> REDSTONE_TORCHES = new ArrayList<>();
 
     /**
      * Helper method to register colored redstone wire.
@@ -65,14 +70,45 @@ public class ModBlocks {
      * @return The registered block
      */
     private static DeferredBlock<Block> registerRedstoneLamp(String name, MapColor color) {
-        DeferredBlock<Block> block = BLOCKS.registerBlock(name, RedstoneLampBlock::new, BlockBehaviour.Properties.of()
+        DeferredBlock<Block> block = BLOCKS.register(name, () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .strength(0.3F)
                 .explosionResistance(0.3F)
                 .lightLevel((state) -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)
-                .sound(SoundType.GLASS));
+                .sound(SoundType.GLASS)));
         REDSTONE_LAMPS.add(block);
         return block;
+    }
+
+    /**
+     * Helper method to register colored redstone torch.
+     * @param name The torch name
+     * @param color The map color
+     * @param hexColor The color in HEX format for particles
+     * @return The registered torch block
+     */
+    private static DeferredBlock<Block> registerRedstoneTorch(String name, MapColor color, int hexColor) {
+        String wallName = name.replace("_torch", "_wall_torch");
+
+        // Register the wall torch first as it's needed by the standing torch
+        DeferredBlock<Block> wallTorch = BLOCKS.register(wallName, () -> new ColoredRedstoneWallTorchBlock(BlockBehaviour.Properties.of()
+                .mapColor(color)
+                .noCollission()
+                .instabreak()
+                .lightLevel((state) -> state.getValue(RedstoneWallTorchBlock.LIT) ? 7 : 0)
+                .sound(SoundType.WOOD)
+                .pushReaction(PushReaction.DESTROY), hexColor));
+
+        DeferredBlock<Block> torch = BLOCKS.register(name, () -> new ColoredRedstoneTorchBlock(BlockBehaviour.Properties.of()
+                .mapColor(color)
+                .noCollission()
+                .instabreak()
+                .lightLevel((state) -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
+                .sound(SoundType.WOOD)
+                .pushReaction(PushReaction.DESTROY), hexColor));
+
+        REDSTONE_TORCHES.add(torch);
+        return torch;
     }
 
     // Register wires
@@ -125,6 +161,22 @@ public class ModBlocks {
     public static final DeferredBlock<Block> PURPLE_REDSTONE_LAMP = registerRedstoneLamp("purple_redstone_lamp", MapColor.COLOR_PURPLE);
     public static final DeferredBlock<Block> MAGENTA_REDSTONE_LAMP = registerRedstoneLamp("magenta_redstone_lamp", MapColor.COLOR_MAGENTA);
     public static final DeferredBlock<Block> PINK_REDSTONE_LAMP = registerRedstoneLamp("pink_redstone_lamp", MapColor.COLOR_PINK);
+
+    public static final DeferredBlock<Block> WHITE_REDSTONE_TORCH = registerRedstoneTorch("white_redstone_torch", MapColor.SNOW, 0xF9FFFE);
+    public static final DeferredBlock<Block> LIGHT_GRAY_REDSTONE_TORCH = registerRedstoneTorch("light_gray_redstone_torch", MapColor.COLOR_LIGHT_GRAY, 0x9D9D97);
+    public static final DeferredBlock<Block> GRAY_REDSTONE_TORCH = registerRedstoneTorch("gray_redstone_torch", MapColor.COLOR_GRAY, 0x474F52);
+    public static final DeferredBlock<Block> BLACK_REDSTONE_TORCH = registerRedstoneTorch("black_redstone_torch", MapColor.COLOR_BLACK, 0x1D1D21);
+    public static final DeferredBlock<Block> BROWN_REDSTONE_TORCH = registerRedstoneTorch("brown_redstone_torch", MapColor.COLOR_BROWN, 0x835432);
+    public static final DeferredBlock<Block> ORANGE_REDSTONE_TORCH = registerRedstoneTorch("orange_redstone_torch", MapColor.COLOR_ORANGE, 0xF07613);
+    public static final DeferredBlock<Block> YELLOW_REDSTONE_TORCH = registerRedstoneTorch("yellow_redstone_torch", MapColor.COLOR_YELLOW, 0xFED83D);
+    public static final DeferredBlock<Block> LIME_REDSTONE_TORCH = registerRedstoneTorch("lime_redstone_torch", MapColor.COLOR_LIGHT_GREEN, 0x80C71F);
+    public static final DeferredBlock<Block> GREEN_REDSTONE_TORCH = registerRedstoneTorch("green_redstone_torch", MapColor.COLOR_GREEN, 0x5E7C16);
+    public static final DeferredBlock<Block> CYAN_REDSTONE_TORCH = registerRedstoneTorch("cyan_redstone_torch", MapColor.COLOR_CYAN, 0x169C9C);
+    public static final DeferredBlock<Block> LIGHT_BLUE_REDSTONE_TORCH = registerRedstoneTorch("light_blue_redstone_torch", MapColor.COLOR_LIGHT_BLUE, 0x3AB3DA);
+    public static final DeferredBlock<Block> BLUE_REDSTONE_TORCH = registerRedstoneTorch("blue_redstone_torch", MapColor.COLOR_BLUE, 0x3C44AA);
+    public static final DeferredBlock<Block> PURPLE_REDSTONE_TORCH = registerRedstoneTorch("purple_redstone_torch", MapColor.COLOR_PURPLE, 0x8932B8);
+    public static final DeferredBlock<Block> MAGENTA_REDSTONE_TORCH = registerRedstoneTorch("magenta_redstone_torch", MapColor.COLOR_MAGENTA, 0xC74EBD);
+    public static final DeferredBlock<Block> PINK_REDSTONE_TORCH = registerRedstoneTorch("pink_redstone_torch", MapColor.COLOR_PINK, 0xF38BAA);
 
     /**
      * Register blocks with the mod event bus.

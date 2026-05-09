@@ -31,7 +31,7 @@ public abstract class RedStoneWireBlockMixin {
      * @reason Allows colored wires to consider each other's signal.
      */
     @Inject(method = "getWireSignal", at = @At("HEAD"), cancellable = true)
-    private void onGetWireSignal(BlockState state, CallbackInfoReturnable<Integer> cir) {
+    public void onGetWireSignal(BlockState state, CallbackInfoReturnable<Integer> cir) {
         if (state.getBlock() instanceof RedStoneWireBlock) {
             cir.setReturnValue(state.getValue(RedStoneWireBlock.POWER));
         }
