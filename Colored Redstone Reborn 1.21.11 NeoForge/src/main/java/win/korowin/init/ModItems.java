@@ -55,13 +55,11 @@ public class ModItems {
      */
     private static DeferredItem<Item> registerRedstoneTorch(String name, DeferredBlock<Block> torch) {
         return ITEMS.registerItem(name, properties -> {
-            String wallName = name.replace("_torch", "_wall_torch");
-            var wallTorchHolder = ModBlocks.BLOCKS.getEntries().stream()
-                    .filter(entry -> entry.getId().getPath().equals(wallName))
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Wall torch block not found: " + wallName));
-
-            return new StandingAndWallBlockItem(torch.get(), (Block) wallTorchHolder.get(), Direction.DOWN, properties);
+            DeferredBlock<Block> wallTorch = ModBlocks.REDSTONE_WALL_TORCHES.get(name);
+            if (wallTorch == null) {
+                throw new RuntimeException("Wall torch block not found for: " + name);
+            }
+            return new StandingAndWallBlockItem(torch.get(), wallTorch.get(), Direction.DOWN, properties);
         });
     }
 

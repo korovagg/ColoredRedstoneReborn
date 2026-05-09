@@ -1,5 +1,7 @@
 package win.korowin.init;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PoweredBlock;
@@ -19,7 +21,9 @@ import win.korowin.block.ColoredRedstoneWallTorchBlock;
 import win.korowin.block.ColoredRedstoneWireBlock;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class for initializing and registering all mod blocks.
@@ -30,6 +34,7 @@ public class ModBlocks {
     public static final List<DeferredBlock<Block>> REDSTONE_WIRES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> REDSTONE_LAMPS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> REDSTONE_TORCHES = new ArrayList<>();
+    public static final Map<String, DeferredBlock<Block>> REDSTONE_WALL_TORCHES = new HashMap<>();
 
     /**
      * Helper method to register colored redstone wire.
@@ -38,11 +43,12 @@ public class ModBlocks {
      * @return The registered block
      */
     private static DeferredBlock<Block> registerWire(String name, int color) {
-        DeferredBlock<Block> block = BLOCKS.register(name, () -> new ColoredRedstoneWireBlock(BlockBehaviour.Properties.of()
+        DeferredBlock<Block> block = BLOCKS.registerBlock(name, (properties) -> new ColoredRedstoneWireBlock(properties, color), 
+            BlockBehaviour.Properties.of()
                 .noCollision()
                 .instabreak()
                 .pushReaction(PushReaction.DESTROY)
-                .sound(SoundType.STONE), color));
+                .sound(SoundType.STONE));
         REDSTONE_WIRES.add(block);
         return block;
     }
@@ -54,11 +60,12 @@ public class ModBlocks {
      * @return The registered block
      */
     private static DeferredBlock<Block> registerRedstoneBlock(String name, MapColor color) {
-        DeferredBlock<Block> block = BLOCKS.register(name, () -> new PoweredBlock(BlockBehaviour.Properties.of()
+        DeferredBlock<Block> block = BLOCKS.registerBlock(name, PoweredBlock::new, 
+            BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .requiresCorrectToolForDrops()
                 .strength(5.0F, 6.0F)
-                .sound(SoundType.METAL)));
+                .sound(SoundType.METAL));
         REDSTONE_BLOCKS.add(block);
         return block;
     }
@@ -70,12 +77,13 @@ public class ModBlocks {
      * @return The registered block
      */
     private static DeferredBlock<Block> registerRedstoneLamp(String name, MapColor color) {
-        DeferredBlock<Block> block = BLOCKS.register(name, () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+        DeferredBlock<Block> block = BLOCKS.registerBlock(name, RedstoneLampBlock::new, 
+            BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .strength(0.3F)
                 .explosionResistance(0.3F)
                 .lightLevel((state) -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)
-                .sound(SoundType.GLASS)));
+                .sound(SoundType.GLASS));
         REDSTONE_LAMPS.add(block);
         return block;
     }
@@ -91,21 +99,25 @@ public class ModBlocks {
         String wallName = name.replace("_torch", "_wall_torch");
 
         // Register the wall torch first as it's needed by the standing torch
-        BLOCKS.register(wallName, () -> new ColoredRedstoneWallTorchBlock(BlockBehaviour.Properties.of()
+        DeferredBlock<Block> wallTorch = BLOCKS.registerBlock(wallName, (properties) -> new ColoredRedstoneWallTorchBlock(properties, hexColor), 
+            BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .noCollision()
                 .instabreak()
                 .lightLevel((state) -> state.getValue(RedstoneWallTorchBlock.LIT) ? 7 : 0)
                 .sound(SoundType.WOOD)
-                .pushReaction(PushReaction.DESTROY), hexColor));
+                .pushReaction(PushReaction.DESTROY));
 
-        DeferredBlock<Block> torch = BLOCKS.register(name, () -> new ColoredRedstoneTorchBlock(BlockBehaviour.Properties.of()
+        REDSTONE_WALL_TORCHES.put(name, wallTorch);
+
+        DeferredBlock<Block> torch = BLOCKS.registerBlock(name, (properties) -> new ColoredRedstoneTorchBlock(properties, hexColor), 
+            BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .noCollision()
                 .instabreak()
                 .lightLevel((state) -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
                 .sound(SoundType.WOOD)
-                .pushReaction(PushReaction.DESTROY), hexColor));
+                .pushReaction(PushReaction.DESTROY));
 
         REDSTONE_TORCHES.add(torch);
         return torch;
@@ -113,21 +125,21 @@ public class ModBlocks {
 
     // Register wires
 
-    public static final DeferredBlock<Block> WHITE_REDSTONE_WIRE = registerWire("white_redstone", 0xF9FFFE);
-    public static final DeferredBlock<Block> LIGHT_GRAY_REDSTONE_WIRE = registerWire("light_gray_redstone", 0x9D9D97);
-    public static final DeferredBlock<Block> GRAY_REDSTONE_WIRE = registerWire("gray_redstone", 0x474F52);
-    public static final DeferredBlock<Block> BLACK_REDSTONE_WIRE = registerWire("black_redstone", 0x1D1D21);
-    public static final DeferredBlock<Block> BROWN_REDSTONE_WIRE = registerWire("brown_redstone", 0x835432);
-    public static final DeferredBlock<Block> ORANGE_REDSTONE_WIRE = registerWire("orange_redstone", 0xF07613);
-    public static final DeferredBlock<Block> YELLOW_REDSTONE_WIRE = registerWire("yellow_redstone", 0xFED83D);
-    public static final DeferredBlock<Block> LIME_REDSTONE_WIRE = registerWire("lime_redstone", 0x80C71F);
-    public static final DeferredBlock<Block> GREEN_REDSTONE_WIRE = registerWire("green_redstone", 0x5E7C16);
-    public static final DeferredBlock<Block> CYAN_REDSTONE_WIRE = registerWire("cyan_redstone", 0x169C9C);
-    public static final DeferredBlock<Block> LIGHT_BLUE_REDSTONE_WIRE = registerWire("light_blue_redstone", 0x3AB3DA);
-    public static final DeferredBlock<Block> BLUE_REDSTONE_WIRE = registerWire("blue_redstone", 0x3C44AA);
-    public static final DeferredBlock<Block> PURPLE_REDSTONE_WIRE = registerWire("purple_redstone", 0x8932B8);
-    public static final DeferredBlock<Block> MAGENTA_REDSTONE_WIRE = registerWire("magenta_redstone", 0xC74EBD);
-    public static final DeferredBlock<Block> PINK_REDSTONE_WIRE = registerWire("pink_redstone", 0xF38BAA);
+    public static final DeferredBlock<Block> WHITE_REDSTONE_WIRE = registerWire("white_redstone_wire", 0xF9FFFE);
+    public static final DeferredBlock<Block> LIGHT_GRAY_REDSTONE_WIRE = registerWire("light_gray_redstone_wire", 0x9D9D97);
+    public static final DeferredBlock<Block> GRAY_REDSTONE_WIRE = registerWire("gray_redstone_wire", 0x474F52);
+    public static final DeferredBlock<Block> BLACK_REDSTONE_WIRE = registerWire("black_redstone_wire", 0x1D1D21);
+    public static final DeferredBlock<Block> BROWN_REDSTONE_WIRE = registerWire("brown_redstone_wire", 0x835432);
+    public static final DeferredBlock<Block> ORANGE_REDSTONE_WIRE = registerWire("orange_redstone_wire", 0xF07613);
+    public static final DeferredBlock<Block> YELLOW_REDSTONE_WIRE = registerWire("yellow_redstone_wire", 0xFED83D);
+    public static final DeferredBlock<Block> LIME_REDSTONE_WIRE = registerWire("lime_redstone_wire", 0x80C71F);
+    public static final DeferredBlock<Block> GREEN_REDSTONE_WIRE = registerWire("green_redstone_wire", 0x5E7C16);
+    public static final DeferredBlock<Block> CYAN_REDSTONE_WIRE = registerWire("cyan_redstone_wire", 0x169C9C);
+    public static final DeferredBlock<Block> LIGHT_BLUE_REDSTONE_WIRE = registerWire("light_blue_redstone_wire", 0x3AB3DA);
+    public static final DeferredBlock<Block> BLUE_REDSTONE_WIRE = registerWire("blue_redstone_wire", 0x3C44AA);
+    public static final DeferredBlock<Block> PURPLE_REDSTONE_WIRE = registerWire("purple_redstone_wire", 0x8932B8);
+    public static final DeferredBlock<Block> MAGENTA_REDSTONE_WIRE = registerWire("magenta_redstone_wire", 0xC74EBD);
+    public static final DeferredBlock<Block> PINK_REDSTONE_WIRE = registerWire("pink_redstone_wire", 0xF38BAA);
 
     public static final DeferredBlock<Block> WHITE_REDSTONE_BLOCK = registerRedstoneBlock("white_redstone_block", MapColor.SNOW);
     public static final DeferredBlock<Block> LIGHT_GRAY_REDSTONE_BLOCK = registerRedstoneBlock("light_gray_redstone_block", MapColor.COLOR_LIGHT_GRAY);
