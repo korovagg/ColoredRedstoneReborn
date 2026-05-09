@@ -1,14 +1,23 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:redstone_torch"
-        },
-        {
-            "item": "minecraft:light_gray_dye"
-        }
-    ],
-    "result": {
-        "id": "coloredredstonereborn:light_gray_redstone_torch"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "R",
+    "S"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:light_gray_dye"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
     }
+  },
+  "result": {
+    "id": "coloredredstonereborn:light_gray_redstone_torch",
+    "count": 1
+  }
 }
