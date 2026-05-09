@@ -1,7 +1,7 @@
 package win.korowin.block;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.RedstoneWallTorchBlock;
+import net.minecraft.block.WallRedstoneTorchBlock;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -13,7 +13,7 @@ import org.joml.Vector3f;
  * Custom class for colored redstone wall torch.
  * Allows changing particle colors when torch is active.
  */
-public class ColoredRedstoneWallTorchBlock extends RedstoneWallTorchBlock {
+public class ColoredRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
     private final Vector3f particleColor;
 
     public ColoredRedstoneWallTorchBlock(Settings settings, int color) {

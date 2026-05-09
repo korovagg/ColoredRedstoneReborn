@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.VerticallyAttachedBlockItem;
+import net.minecraft.item.VerticallyAttachableBlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -39,7 +39,7 @@ public class ModItems {
     }
 
     private static Item registerRedstoneTorch(String name, Block standing, Block wall) {
-        return registerItem(name, new VerticallyAttachedBlockItem(standing, wall, new Item.Settings(), Direction.DOWN));
+        return registerItem(name, new VerticallyAttachableBlockItem(standing, wall, new Item.Settings(), Direction.DOWN));
     }
 
     // Dusts
