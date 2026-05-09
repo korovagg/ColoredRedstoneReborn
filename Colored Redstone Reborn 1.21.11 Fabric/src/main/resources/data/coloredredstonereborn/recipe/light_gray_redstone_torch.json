@@ -6,15 +6,9 @@
     "S"
   ],
   "key": {
-    "D": {
-      "item": "minecraft:light_gray_dye"
-    },
-    "R": {
-      "tag": "c:dusts/redstone"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "D": "minecraft:light_gray_dye",
+    "R": "#c:dusts/redstone",
+    "S": "minecraft:stick"
   },
   "result": {
     "id": "coloredredstonereborn:light_gray_redstone_torch",

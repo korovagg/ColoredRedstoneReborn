@@ -6,15 +6,9 @@
     "S"
   ],
   "key": {
-    "D": {
-      "item": "minecraft:white_dye"
-    },
-    "R": {
-      "tag": "c:dusts/redstone"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "D": "minecraft:white_dye",
+    "R": "#c:dusts/redstone",
+    "S": "minecraft:stick"
   },
   "result": {
     "id": "coloredredstonereborn:white_redstone_torch",
