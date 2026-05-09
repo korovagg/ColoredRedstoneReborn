@@ -20,7 +20,7 @@ public abstract class RedstoneWireEvaluatorMixin {
      * @reason Allows colored wires to consider each other's signal.
      */
     @Overwrite
-    protected int getWireSignal(BlockPos pos, BlockState state) {
+    public int getWireSignal(BlockPos pos, BlockState state) {
         if (state.getBlock() instanceof RedStoneWireBlock) {
             return state.getValue(RedStoneWireBlock.POWER);
         }
