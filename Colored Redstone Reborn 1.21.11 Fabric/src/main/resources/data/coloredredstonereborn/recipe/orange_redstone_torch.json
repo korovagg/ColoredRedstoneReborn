@@ -1,10 +1,23 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:redstone_torch",
-    "minecraft:orange_dye"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "R",
+    "S"
   ],
+  "key": {
+    "D": {
+      "item": "minecraft:orange_dye"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
   "result": {
-    "id": "coloredredstonereborn:orange_redstone_torch"
+    "id": "coloredredstonereborn:orange_redstone_torch",
+    "count": 1
   }
 }

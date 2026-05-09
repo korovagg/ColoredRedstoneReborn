@@ -1,10 +1,23 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:redstone_torch",
-    "minecraft:green_dye"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "R",
+    "S"
   ],
+  "key": {
+    "D": {
+      "item": "minecraft:green_dye"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
   "result": {
-    "id": "coloredredstonereborn:green_redstone_torch"
+    "id": "coloredredstonereborn:green_redstone_torch",
+    "count": 1
   }
 }
