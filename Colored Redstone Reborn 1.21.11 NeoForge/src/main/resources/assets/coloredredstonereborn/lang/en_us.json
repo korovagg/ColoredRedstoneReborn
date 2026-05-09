@@ -105,5 +105,20 @@
     "block.coloredredstonereborn.magenta_comparator": "Magenta Redstone Comparator",
     "block.coloredredstonereborn.pink_redstone_torch": "Pink Redstone Torch",
     "block.coloredredstonereborn.pink_repeater": "Pink Redstone Repeater",
-    "block.coloredredstonereborn.pink_comparator": "Pink Redstone Comparator"
+    "block.coloredredstonereborn.pink_comparator": "Pink Redstone Comparator",
+    "item.coloredredstonereborn.white_redstone_torch": "White Redstone Torch",
+    "item.coloredredstonereborn.light_gray_redstone_torch": "Light Gray Redstone Torch",
+    "item.coloredredstonereborn.gray_redstone_torch": "Gray Redstone Torch",
+    "item.coloredredstonereborn.black_redstone_torch": "Black Redstone Torch",
+    "item.coloredredstonereborn.brown_redstone_torch": "Brown Redstone Torch",
+    "item.coloredredstonereborn.orange_redstone_torch": "Orange Redstone Torch",
+    "item.coloredredstonereborn.yellow_redstone_torch": "Yellow Redstone Torch",
+    "item.coloredredstonereborn.lime_redstone_torch": "Lime Redstone Torch",
+    "item.coloredredstonereborn.green_redstone_torch": "Green Redstone Torch",
+    "item.coloredredstonereborn.cyan_redstone_torch": "Cyan Redstone Torch",
+    "item.coloredredstonereborn.light_blue_redstone_torch": "Light Blue Redstone Torch",
+    "item.coloredredstonereborn.blue_redstone_torch": "Blue Redstone Torch",
+    "item.coloredredstonereborn.purple_redstone_torch": "Purple Redstone Torch",
+    "item.coloredredstonereborn.magenta_redstone_torch": "Magenta Redstone Torch",
+    "item.coloredredstonereborn.pink_redstone_torch": "Pink Redstone Torch"
 }
