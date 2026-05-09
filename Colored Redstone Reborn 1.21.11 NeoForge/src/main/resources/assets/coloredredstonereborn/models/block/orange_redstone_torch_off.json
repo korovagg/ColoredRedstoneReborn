@@ -1,5 +1,5 @@
 {
-    "parent": "minecraft:block/template_torch",
+    "parent": "minecraft:block/template_torch_unlit",
     "render_type": "minecraft:cutout",
     "textures": {
         "torch": "coloredredstonereborn:block/orange_redstone_torch_off"
