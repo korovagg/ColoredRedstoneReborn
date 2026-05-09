@@ -3,7 +3,7 @@ package win.korowin.init;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.VerticallyAttachedBlockItem;
+import net.minecraft.item.VerticallyAttachableBlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -44,7 +44,7 @@ public class ModItems {
 
     private static Item registerRedstoneTorch(String name, Block standing, Block wall) {
         Identifier id = Identifier.of(ColoredRedstoneFabric.MODID, name);
-        return registerItem(name, new VerticallyAttachedBlockItem(standing, wall, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)), Direction.DOWN));
+        return registerItem(name, new VerticallyAttachableBlockItem(standing, wall, Direction.DOWN, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id)).useBlockPrefixedTranslationKey()));
     }
 
     // Dusts
