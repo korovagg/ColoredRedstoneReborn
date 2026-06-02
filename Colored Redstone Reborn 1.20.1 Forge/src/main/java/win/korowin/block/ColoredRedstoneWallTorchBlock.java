@@ -1,0 +1,30 @@
+package win.korowin.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RedstoneWallTorchBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import org.joml.Vector3f;
+
+public class ColoredRedstoneWallTorchBlock extends RedstoneWallTorchBlock {
+    private final Vector3f particleColor;
+
+    public ColoredRedstoneWallTorchBlock(Properties properties, int color) {
+        super(properties);
+        this.particleColor = new Vector3f(((color >> 16) & 0xFF) / 255.0f, ((color >> 8) & 0xFF) / 255.0f, (color & 0xFF) / 255.0f);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (state.getValue(LIT)) {
+            Direction direction = state.getValue(FACING).getOpposite();
+            double d1 = (double) pos.getX() + 0.5D + (random.nextDouble() - 0.5D) * 0.2D + 0.27D * (double) direction.getStepX();
+            double d2 = (double) pos.getY() + 0.7D + (random.nextDouble() - 0.5D) * 0.2D + 0.22D;
+            double d3 = (double) pos.getZ() + 0.5D + (random.nextDouble() - 0.5D) * 0.2D + 0.27D * (double) direction.getStepZ();
+            level.addParticle(new DustParticleOptions(this.particleColor, 1.0F), d1, d2, d3, 0.0D, 0.0D, 0.0D);
+        }
+    }
+}

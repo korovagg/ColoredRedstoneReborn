@@ -1,5 +1,5 @@
 {
-    "parent": "minecraft:block/template_redstone_torch",
+    "parent": "minecraft:block/template_torch",
     "textures": {
         "torch": "coloredredstonereborn:block/gray_redstone_torch_off"
     }

@@ -1,13 +1,21 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:redstone_torch"
-        },
-        {
-            "item": "minecraft:cyan_dye"
-        }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " D ",
+        " R ",
+        " S "
     ],
+    "key": {
+        "D": {
+            "item": "minecraft:cyan_dye"
+        },
+        "R": {
+            "tag": "forge:dusts/redstone"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
     "result": {
         "item": "coloredredstonereborn:cyan_redstone_torch"
     }
