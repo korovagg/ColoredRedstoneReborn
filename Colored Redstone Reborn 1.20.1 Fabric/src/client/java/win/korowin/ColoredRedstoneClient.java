@@ -33,7 +33,10 @@ public class ColoredRedstoneClient implements ClientModInitializer {
         registerWireColor(ModBlocks.PINK_REDSTONE_WIRE, 0xF38BAA);
 
         // Register render layers
-        ModBlocks.REDSTONE_WIRES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+        RenderLayer cutout = RenderLayer.getCutout();
+        ModBlocks.REDSTONE_WIRES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, cutout));
+        ModBlocks.REDSTONE_TORCHES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, cutout));
+        ModBlocks.REDSTONE_WALL_TORCHES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, cutout));
     }
 
     private void registerWireColor(Block block, int baseColor) {

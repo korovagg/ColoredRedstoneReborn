@@ -2,6 +2,7 @@ package win.korowin;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,6 +12,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,9 +52,19 @@ public class coloredredstonereborn {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Set render layer for redstone wires to allow transparency in 1.16.5
-            ModBlocks.REDSTONE_WIRES.forEach(block -> {
-                RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout());
+            // Set render layer for redstone wires and torches to allow transparency in 1.16.5
+            event.enqueueWork(() -> {
+                ModBlocks.REDSTONE_WIRES.forEach(block -> {
+                    RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout());
+                });
+
+                ModBlocks.REDSTONE_TORCHES.forEach(block -> {
+                    RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout());
+                });
+
+                ModBlocks.REDSTONE_WALL_TORCHES.values().forEach(block -> {
+                    RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout());
+                });
             });
             
             LOGGER.info("Colored Redstone Reborn: Client setup finished.");

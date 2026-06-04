@@ -1,22 +1,22 @@
 package win.korowin.init;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PoweredBlock;
-import net.minecraft.world.level.block.RedstoneLampBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import win.korowin.coloredredstonereborn;
+import win.korowin.block.ColoredRedstoneTorchBlock;
+import win.korowin.block.ColoredRedstoneWallTorchBlock;
 import win.korowin.block.ColoredRedstoneWireBlock;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class for initializing and registering all mod blocks.
@@ -26,6 +26,8 @@ public class ModBlocks {
     public static final List<RegistryObject<Block>> REDSTONE_BLOCKS = new ArrayList<>();
     public static final List<RegistryObject<Block>> REDSTONE_WIRES = new ArrayList<>();
     public static final List<RegistryObject<Block>> REDSTONE_LAMPS = new ArrayList<>();
+    public static final List<RegistryObject<Block>> REDSTONE_TORCHES = new ArrayList<>();
+    public static final Map<String, RegistryObject<Block>> REDSTONE_WALL_TORCHES = new HashMap<>();
 
     /**
      * Helper method to register colored redstone wire.
@@ -70,6 +72,33 @@ public class ModBlocks {
                 .lightLevel((state) -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)
                 .sound(SoundType.GLASS)));
         REDSTONE_LAMPS.add(block);
+        return block;
+    }
+
+    /**
+     * Helper method to register colored redstone torch.
+     * @param name The block name
+     * @param color The material color
+     * @param hexColor The color in HEX format
+     * @return The registered block
+     */
+    private static RegistryObject<Block> registerRedstoneTorch(String name, MaterialColor color, int hexColor) {
+        String wallName = name.replace("_torch", "_wall_torch");
+
+        RegistryObject<Block> wall = BLOCKS.register(wallName, () -> new ColoredRedstoneWallTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION, color)
+                .noCollission()
+                .instabreak()
+                .lightLevel((state) -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
+                .sound(SoundType.WOOD), hexColor));
+        REDSTONE_WALL_TORCHES.put(wallName, wall);
+
+        RegistryObject<Block> block = BLOCKS.register(name, () -> new ColoredRedstoneTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION, color)
+                .noCollission()
+                .instabreak()
+                .lightLevel((state) -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
+                .sound(SoundType.WOOD), hexColor));
+        REDSTONE_TORCHES.add(block);
+
         return block;
     }
 
@@ -123,6 +152,24 @@ public class ModBlocks {
     public static final RegistryObject<Block> PURPLE_REDSTONE_LAMP = registerRedstoneLamp("purple_redstone_lamp", MaterialColor.COLOR_PURPLE);
     public static final RegistryObject<Block> MAGENTA_REDSTONE_LAMP = registerRedstoneLamp("magenta_redstone_lamp", MaterialColor.COLOR_MAGENTA);
     public static final RegistryObject<Block> PINK_REDSTONE_LAMP = registerRedstoneLamp("pink_redstone_lamp", MaterialColor.COLOR_PINK);
+
+    // Register torches
+
+    public static final RegistryObject<Block> WHITE_REDSTONE_TORCH = registerRedstoneTorch("white_redstone_torch", MaterialColor.SNOW, 0xF9FFFE);
+    public static final RegistryObject<Block> LIGHT_GRAY_REDSTONE_TORCH = registerRedstoneTorch("light_gray_redstone_torch", MaterialColor.COLOR_LIGHT_GRAY, 0x9D9D97);
+    public static final RegistryObject<Block> GRAY_REDSTONE_TORCH = registerRedstoneTorch("gray_redstone_torch", MaterialColor.COLOR_GRAY, 0x474F52);
+    public static final RegistryObject<Block> BLACK_REDSTONE_TORCH = registerRedstoneTorch("black_redstone_torch", MaterialColor.COLOR_BLACK, 0x1D1D21);
+    public static final RegistryObject<Block> BROWN_REDSTONE_TORCH = registerRedstoneTorch("brown_redstone_torch", MaterialColor.COLOR_BROWN, 0x835432);
+    public static final RegistryObject<Block> ORANGE_REDSTONE_TORCH = registerRedstoneTorch("orange_redstone_torch", MaterialColor.COLOR_ORANGE, 0xF07613);
+    public static final RegistryObject<Block> YELLOW_REDSTONE_TORCH = registerRedstoneTorch("yellow_redstone_torch", MaterialColor.COLOR_YELLOW, 0xFED83D);
+    public static final RegistryObject<Block> LIME_REDSTONE_TORCH = registerRedstoneTorch("lime_redstone_torch", MaterialColor.COLOR_LIGHT_GREEN, 0x80C71F);
+    public static final RegistryObject<Block> GREEN_REDSTONE_TORCH = registerRedstoneTorch("green_redstone_torch", MaterialColor.COLOR_GREEN, 0x5E7C16);
+    public static final RegistryObject<Block> CYAN_REDSTONE_TORCH = registerRedstoneTorch("cyan_redstone_torch", MaterialColor.COLOR_CYAN, 0x169C9C);
+    public static final RegistryObject<Block> LIGHT_BLUE_REDSTONE_TORCH = registerRedstoneTorch("light_blue_redstone_torch", MaterialColor.COLOR_LIGHT_BLUE, 0x3AB3DA);
+    public static final RegistryObject<Block> BLUE_REDSTONE_TORCH = registerRedstoneTorch("blue_redstone_torch", MaterialColor.COLOR_BLUE, 0x3C44AA);
+    public static final RegistryObject<Block> PURPLE_REDSTONE_TORCH = registerRedstoneTorch("purple_redstone_torch", MaterialColor.COLOR_PURPLE, 0x8932B8);
+    public static final RegistryObject<Block> MAGENTA_REDSTONE_TORCH = registerRedstoneTorch("magenta_redstone_torch", MaterialColor.COLOR_MAGENTA, 0xC74EBD);
+    public static final RegistryObject<Block> PINK_REDSTONE_TORCH = registerRedstoneTorch("pink_redstone_torch", MaterialColor.COLOR_PINK, 0xF38BAA);
 
     /**
      * Registers the DeferredRegister to the mod event bus.

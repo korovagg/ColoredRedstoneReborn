@@ -51,6 +51,21 @@ public class ModColorHandlers {
     }
 
     public static void registerItemColors(ColorHandlerEvent.Item event) {
+        registerWireItemColor(event, ModItems.WHITE_REDSTONE.get(), COLOR_MAP.get("white"));
+        registerWireItemColor(event, ModItems.LIGHT_GRAY_REDSTONE.get(), COLOR_MAP.get("light_gray"));
+        registerWireItemColor(event, ModItems.GRAY_REDSTONE.get(), COLOR_MAP.get("gray"));
+        registerWireItemColor(event, ModItems.BLACK_REDSTONE.get(), COLOR_MAP.get("black"));
+        registerWireItemColor(event, ModItems.BROWN_REDSTONE.get(), COLOR_MAP.get("brown"));
+        registerWireItemColor(event, ModItems.ORANGE_REDSTONE.get(), COLOR_MAP.get("orange"));
+        registerWireItemColor(event, ModItems.YELLOW_REDSTONE.get(), COLOR_MAP.get("yellow"));
+        registerWireItemColor(event, ModItems.LIME_REDSTONE.get(), COLOR_MAP.get("lime"));
+        registerWireItemColor(event, ModItems.GREEN_REDSTONE.get(), COLOR_MAP.get("green"));
+        registerWireItemColor(event, ModItems.CYAN_REDSTONE.get(), COLOR_MAP.get("cyan"));
+        registerWireItemColor(event, ModItems.LIGHT_BLUE_REDSTONE.get(), COLOR_MAP.get("light_blue"));
+        registerWireItemColor(event, ModItems.BLUE_REDSTONE.get(), COLOR_MAP.get("blue"));
+        registerWireItemColor(event, ModItems.PURPLE_REDSTONE.get(), COLOR_MAP.get("purple"));
+        registerWireItemColor(event, ModItems.MAGENTA_REDSTONE.get(), COLOR_MAP.get("magenta"));
+        registerWireItemColor(event, ModItems.PINK_REDSTONE.get(), COLOR_MAP.get("pink"));
     }
 
     private static void registerWireColor(ColorHandlerEvent.Block event, net.minecraft.block.Block block, int baseColor) {
@@ -58,6 +73,10 @@ public class ModColorHandlers {
             int power = state.getValue(RedstoneWireBlock.POWER);
             return getRedstoneColor(power, baseColor);
         }, block);
+    }
+
+    private static void registerWireItemColor(ColorHandlerEvent.Item event, net.minecraft.item.Item item, int baseColor) {
+        event.getItemColors().register((stack, tintIndex) -> getRedstoneColor(15, baseColor), item);
     }
 
     private static int getRedstoneColor(int power, int baseColor) {

@@ -53,6 +53,14 @@ public class coloredredstonereborn {
             ModBlocks.REDSTONE_WIRES.forEach(block -> {
                 ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
             });
+
+            ModBlocks.REDSTONE_TORCHES.forEach(block -> {
+                ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+            });
+
+            ModBlocks.REDSTONE_WALL_TORCHES.values().forEach(block -> {
+                ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+            });
             
             LOGGER.info("Colored Redstone Reborn: Client setup finished.");
         }

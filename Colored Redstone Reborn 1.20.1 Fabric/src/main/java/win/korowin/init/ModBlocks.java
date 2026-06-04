@@ -5,9 +5,10 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import win.korowin.ColoredRedstoneFabric;
+import win.korowin.block.ColoredRedstoneTorchBlock;
+import win.korowin.block.ColoredRedstoneWallTorchBlock;
 import win.korowin.block.ColoredRedstoneWireBlock;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class ModBlocks {
     public static final List<Block> REDSTONE_BLOCKS = new ArrayList<>();
     public static final List<Block> REDSTONE_WIRES = new ArrayList<>();
     public static final List<Block> REDSTONE_LAMPS = new ArrayList<>();
+    public static final List<Block> REDSTONE_TORCHES = new ArrayList<>();
+    public static final List<Block> REDSTONE_WALL_TORCHES = new ArrayList<>();
 
     private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ColoredRedstoneFabric.MODID, name), block);
@@ -52,6 +55,37 @@ public class ModBlocks {
                 .luminance((state) -> state.get(RedstoneLampBlock.LIT) ? 15 : 0)
                 .sounds(BlockSoundGroup.GLASS)));
         REDSTONE_LAMPS.add(block);
+        return block;
+    }
+
+    /**
+     * Registers a pair of blocks: a standing torch and a wall torch of the same color.
+     *
+     * @param name     standing torch id (e.g. white_redstone_torch)
+     * @param color    MapColor used for maps/tooltips
+     * @param hexColor particle color in 0xRRGGBB format
+     * @return the standing torch block
+     */
+    private static Block registerRedstoneTorch(String name, MapColor color, int hexColor) {
+        String wallName = name.replace("_torch", "_wall_torch");
+
+        Block wall = registerBlock(wallName, new ColoredRedstoneWallTorchBlock(AbstractBlock.Settings.create()
+                .mapColor(color)
+                .noCollision()
+                .breakInstantly()
+                .luminance((state) -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0)
+                .sounds(BlockSoundGroup.WOOD)
+                .pistonBehavior(PistonBehavior.DESTROY), hexColor));
+        REDSTONE_WALL_TORCHES.add(wall);
+
+        Block block = registerBlock(name, new ColoredRedstoneTorchBlock(AbstractBlock.Settings.create()
+                .mapColor(color)
+                .noCollision()
+                .breakInstantly()
+                .luminance((state) -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0)
+                .sounds(BlockSoundGroup.WOOD)
+                .pistonBehavior(PistonBehavior.DESTROY), hexColor));
+        REDSTONE_TORCHES.add(block);
         return block;
     }
 
@@ -106,6 +140,23 @@ public class ModBlocks {
     public static final Block PURPLE_REDSTONE_LAMP = registerRedstoneLamp("purple_redstone_lamp", MapColor.PURPLE);
     public static final Block MAGENTA_REDSTONE_LAMP = registerRedstoneLamp("magenta_redstone_lamp", MapColor.MAGENTA);
     public static final Block PINK_REDSTONE_LAMP = registerRedstoneLamp("pink_redstone_lamp", MapColor.PINK);
+
+    // Register torches
+    public static final Block WHITE_REDSTONE_TORCH = registerRedstoneTorch("white_redstone_torch", MapColor.WHITE, 0xF9FFFE);
+    public static final Block LIGHT_GRAY_REDSTONE_TORCH = registerRedstoneTorch("light_gray_redstone_torch", MapColor.LIGHT_GRAY, 0x9D9D97);
+    public static final Block GRAY_REDSTONE_TORCH = registerRedstoneTorch("gray_redstone_torch", MapColor.GRAY, 0x474F52);
+    public static final Block BLACK_REDSTONE_TORCH = registerRedstoneTorch("black_redstone_torch", MapColor.BLACK, 0x1D1D21);
+    public static final Block BROWN_REDSTONE_TORCH = registerRedstoneTorch("brown_redstone_torch", MapColor.BROWN, 0x835432);
+    public static final Block ORANGE_REDSTONE_TORCH = registerRedstoneTorch("orange_redstone_torch", MapColor.ORANGE, 0xF07613);
+    public static final Block YELLOW_REDSTONE_TORCH = registerRedstoneTorch("yellow_redstone_torch", MapColor.YELLOW, 0xFED83D);
+    public static final Block LIME_REDSTONE_TORCH = registerRedstoneTorch("lime_redstone_torch", MapColor.LIME, 0x80C71F);
+    public static final Block GREEN_REDSTONE_TORCH = registerRedstoneTorch("green_redstone_torch", MapColor.GREEN, 0x5E7C16);
+    public static final Block CYAN_REDSTONE_TORCH = registerRedstoneTorch("cyan_redstone_torch", MapColor.CYAN, 0x169C9C);
+    public static final Block LIGHT_BLUE_REDSTONE_TORCH = registerRedstoneTorch("light_blue_redstone_torch", MapColor.LIGHT_BLUE, 0x3AB3DA);
+    public static final Block BLUE_REDSTONE_TORCH = registerRedstoneTorch("blue_redstone_torch", MapColor.BLUE, 0x3C44AA);
+    public static final Block PURPLE_REDSTONE_TORCH = registerRedstoneTorch("purple_redstone_torch", MapColor.PURPLE, 0x8932B8);
+    public static final Block MAGENTA_REDSTONE_TORCH = registerRedstoneTorch("magenta_redstone_torch", MapColor.MAGENTA, 0xC74EBD);
+    public static final Block PINK_REDSTONE_TORCH = registerRedstoneTorch("pink_redstone_torch", MapColor.PINK, 0xF38BAA);
 
     public static void register() {
         // Blocks are registered during field initialization

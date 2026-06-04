@@ -1,6 +1,9 @@
 package win.korowin;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -10,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import win.korowin.init.ModBlocks;
 import win.korowin.init.ModColorHandlers;
@@ -47,6 +51,19 @@ public class coloredredstonereborn {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                RenderType cutout = RenderType.cutout();
+
+                for (RegistryObject<Block> wire : ModBlocks.REDSTONE_WIRES) {
+                    ItemBlockRenderTypes.setRenderLayer(wire.get(), cutout);
+                }
+                for (RegistryObject<Block> torch : ModBlocks.REDSTONE_TORCHES) {
+                    ItemBlockRenderTypes.setRenderLayer(torch.get(), cutout);
+                }
+                for (RegistryObject<Block> wallTorch : ModBlocks.REDSTONE_WALL_TORCHES.values()) {
+                    ItemBlockRenderTypes.setRenderLayer(wallTorch.get(), cutout);
+                }
+            });
             LOGGER.info("Colored Redstone Reborn: Client setup finished.");
         }
 
