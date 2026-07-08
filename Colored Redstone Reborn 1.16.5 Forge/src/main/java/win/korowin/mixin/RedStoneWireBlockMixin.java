@@ -20,57 +20,58 @@ import javax.annotation.Nullable;
 
 /**
  * Mixin to change the behavior of vanilla redstone wire.
- * Allows different redstone colors to connect to each other and share signals in 1.16.5.
+ * Restricts colored wire connectivity to wires of the same exact color in 1.16.5.
  */
 @Mixin(RedstoneWireBlock.class)
 public abstract class RedStoneWireBlockMixin {
 
     /**
-     * Allows different redstone wire blocks to share signal.
+     * Restricts wire signal sharing to the same exact wire block.
      * @author Korowin
-     * @reason Allows colored wires to consider each other's signal.
+     * @reason Prevents different colored wires from powering each other.
      */
     @Inject(method = "getWireSignal(Lnet/minecraft/block/BlockState;)I", at = @At("HEAD"), cancellable = true)
     private void onGetWireSignal(BlockState state, CallbackInfoReturnable<Integer> cir) {
-        if (state.getBlock() instanceof RedstoneWireBlock) {
+        if (state.getBlock() == (Object) this) {
             cir.setReturnValue(state.getValue(RedstoneWireBlock.POWER));
         }
     }
 
     @Inject(method = "getConnectingSide(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Direction;Z)Lnet/minecraft/state/properties/RedstoneSide;", at = @At("HEAD"), cancellable = true)
     private void onGetConnectingSide(IBlockReader world, BlockPos pos, Direction direction, boolean canClimb, CallbackInfoReturnable<RedstoneSide> cir) {
+        RedstoneWireBlock currentWire = (RedstoneWireBlock) (Object) this;
         BlockPos blockpos = pos.relative(direction);
         BlockState blockstate = world.getBlockState(blockpos);
         if (canClimb) {
             boolean flag = this.canSurviveOn(world, blockpos, blockstate);
-            if (flag && myShouldConnectTo(world.getBlockState(blockpos.above()))) {
+            if (flag && myShouldConnectTo(world.getBlockState(blockpos.above()), currentWire)) {
                 cir.setReturnValue(RedstoneSide.UP);
                 return;
             }
         }
 
-        if (myShouldConnectTo(blockstate, direction)) {
+        if (myShouldConnectTo(blockstate, direction, currentWire)) {
             cir.setReturnValue(RedstoneSide.SIDE);
         } else if (blockstate.isRedstoneConductor(world, blockpos)) {
             cir.setReturnValue(RedstoneSide.NONE);
         } else {
-            cir.setReturnValue(myShouldConnectTo(world.getBlockState(blockpos.below()), direction) ? RedstoneSide.SIDE : RedstoneSide.NONE);
+            cir.setReturnValue(myShouldConnectTo(world.getBlockState(blockpos.below()), direction, currentWire) ? RedstoneSide.SIDE : RedstoneSide.NONE);
         }
     }
 
     /**
-     * Replacement for vanilla shouldConnectTo that also handles colored redstone.
+     * Checks if the adjacent block can connect to the current wire color.
      */
-    private static boolean myShouldConnectTo(BlockState state) {
-        return myShouldConnectTo(state, null);
+    private static boolean myShouldConnectTo(BlockState state, RedstoneWireBlock currentWire) {
+        return myShouldConnectTo(state, null, currentWire);
     }
 
     /**
-     * Replacement for vanilla shouldConnectTo that also handles colored redstone.
+     * Checks if the adjacent block can connect to the current wire color.
      */
-    private static boolean myShouldConnectTo(BlockState state, @Nullable Direction direction) {
+    private static boolean myShouldConnectTo(BlockState state, @Nullable Direction direction, RedstoneWireBlock currentWire) {
         if (state.getBlock() instanceof RedstoneWireBlock) {
-            return true;
+            return state.getBlock() == currentWire;
         } else if (state.is(Blocks.REPEATER)) {
             Direction facing = state.getValue(RepeaterBlock.FACING);
             return facing == direction || facing.getOpposite() == direction;

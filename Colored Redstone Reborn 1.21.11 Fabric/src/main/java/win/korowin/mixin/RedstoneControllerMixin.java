@@ -4,24 +4,29 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RedstoneController;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 
 /**
  * Mixin to change the behavior of the redstone wire evaluator (RedstoneController).
- * Allows different redstone colors to share signals.
+ * Restricts wire power lookup to the same exact wire block.
  */
 @Mixin(RedstoneController.class)
 public abstract class RedstoneControllerMixin {
+    @Shadow
+    @Final
+    protected RedstoneWireBlock wire;
 
     /**
-     * Allows different redstone wire blocks to share signal in the evaluator.
+     * Restricts wire power lookup to the same exact wire block in the evaluator.
      * @author Korowin
-     * @reason Allows colored wires to consider each other's signal.
+     * @reason Prevents different colored wires from powering each other.
      */
     @Overwrite
     public int getWirePowerAt(BlockPos pos, BlockState state) {
-        if (state.getBlock() instanceof RedstoneWireBlock) {
+        if (state.getBlock() == this.wire) {
             return state.get(RedstoneWireBlock.POWER);
         }
         return 0;

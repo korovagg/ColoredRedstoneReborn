@@ -10,11 +10,11 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 /**
- * Mixin to change the behavior of the redstone wire evaluator.
+ * Mixin to change the behavior of the redstone wire evaluator (RedstoneController).
  * Restricts wire power lookup to the same exact wire block.
  */
 @Mixin(RedstoneWireEvaluator.class)
-public abstract class RedstoneWireEvaluatorMixin {
+public abstract class RedstoneControllerMixin {
     @Shadow
     @Final
     protected RedStoneWireBlock wireBlock;
