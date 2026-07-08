@@ -3,6 +3,7 @@
 - Colored Redstone Lamps
 - Colored Redstone Blocks
 - Colored Redstone Dust
+- Colored Redstone Torches
 ---
 ![Colored Redstone Lamps and Blocks](https://cdn.modrinth.com/data/cached_images/becb786e5bf3e079e7560d15fda3e576031ae91f.png)
 ![Colored Redstone Dust](https://cdn.modrinth.com/data/cached_images/56113738cf6b9c2acbbda08eac8f964e7e3c9a71.png)
